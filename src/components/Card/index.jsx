@@ -47,10 +47,10 @@ const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
       <div className="task-holder">
         <div className="card-header">{taskObj.Name}</div>
         <p className="card-des">{taskObj.Description}</p>
-        <div className="card-status">Not Doing</div>
+        <div className={`card-status `+ taskObj.status} >{taskObj.status}</div>
         <span className="card-time">
           <FiCalendar size={18}/>
-          <span className="card-time--done">28 February</span>
+          <span className="card-time--done">{taskObj.time}</span>
         </span>
         <div
           style={{
@@ -59,7 +59,8 @@ const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
             bottom: "20px",
             justifyContent: "space-between",
             marginTop: "20px",
-            borderTop: "2px solid #f8f6f6",
+            borderTop: '2px solid',
+            borderColor: colors[index % 5].secondaryColor,
             padding:"5px 0"
           }}
         >

@@ -77,16 +77,20 @@
   margin-top: 10px;
 }
 
-.card-status {
+.card-status  {
   padding: 5px;
   background-color: #fdeaf0;
-  color: #ff4f7d;
   border-radius: 8px;
   margin: 5px 0;
   width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fe4576;
+}
+.Done{
+  color: #74cc14;
+  background-color: #ecfde6;
 }
 
 .card-time--done {
@@ -106,11 +110,15 @@
   position: relative;
 }
 
+.wrapper-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 8% 0 6%;
+}
 .task-header {
   font-weight: 700;
   text-transform: uppercase;
-  padding-left: 10%;
-  padding-top: 50px;
+  
 }
 
 .task_container {
@@ -119,10 +127,29 @@
   background-color: #f4f8fb;
 }
 
+.task-search{
+  display: flex;
+  min-width: 300px;
+  height: 40px;
+  align-items: center;
+}
+
+.task-search>input:focus{
+  width: 500px !important;
+}
+
+.search-label{
+  display: flex;
+  margin-right: 10px;
+  justify-content: space-between;
+  align-items: center !;
+}
+
 .task-action {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0 3%;
 }
 
 .task-list {

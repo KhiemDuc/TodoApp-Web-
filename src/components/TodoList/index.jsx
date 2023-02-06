@@ -4,6 +4,7 @@ import Card from "../Card";
 import SideBar from "../SideBar/SideBar";
 import { IoIosAdd } from "react-icons/io";
 import { BiFilter } from "react-icons/bi";
+import {AiOutlineSearch} from "react-icons/ai"
 
 const TodoList = () => {
   const [modal, setModal] = useState(false);
@@ -46,19 +47,43 @@ const TodoList = () => {
     setModal(false);
   };
 
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    //convert input text to lower case
+    const valueSearch = e.target.value.toLowerCase();
+    setInputText(valueSearch);
+  };
+  const filteredData = taskList.filter((el) => {
+    //if no input the return the original
+    if (inputText === "") {
+      return el;
+    }
+    //return the item which contains the user input
+    else {
+      return el.Name.toLowerCase().includes(inputText);
+    }
+  });
+
   const [sidebarIsOpen, setSidebarOpen] = useState(true);
   const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
   return (
     <div className="Wrapper">
-      {/* <div className="header text-center">
-      <div class="text-center">
-            <img className="logo-img " src="https://culturedvulttures.com/wp-content/uploads/2022/10/Naruto-Fate-Boruto-803x452.jpg" alt="..."/>
-        </div>
-        <h3 className="header_logo">Quản Lý Công Việc</h3>
-      </div> */}
       <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
       <div className="task_container">
-        <h2 className="task-header">All Tasks</h2>
+        <div className="wrapper-header">
+          <h2 className="task-header">All Tasks</h2>
+          <span className="form-group task-search">
+            <input
+              type="text"
+              className="form-control"
+              value={inputText}
+              onChange={inputHandler}
+              name="search"
+              placeholder={`Search Here...`}
+            />
+          </span>
+        </div>
+
         <div className="task-action">
           <button
             className="btn btn-outline-secondary m-5 "
@@ -74,7 +99,7 @@ const TodoList = () => {
         </div>
         <div className="task-list">
           {taskList &&
-            taskList.map((obj, index) => (
+            filteredData.map((obj, index) => (
               <Card
                 key={index}
                 taskObj={obj}
