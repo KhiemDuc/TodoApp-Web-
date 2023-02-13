@@ -267,22 +267,29 @@ li a.dropdown-toggle::after {
 }
 
 .side-menu {
-  height: calc(100vh - 130px);
-  overflow-y: scroll;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.nav-menu{
+  font-size: 17.5px;
+  font-weight: 600;
+  width: 70%;
+}
+.nav-menu>li{
+  margin: 20px;
+  color: #9ca9b9;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: flex-end;
 }
 
 .side-menu::-webkit-scrollbar {
   width: 10px;
 }
 
-.side-menu::-webkit-scrollbar-thumb {
-  background: #5466b3;
-  border-radius: 3px;
-}
-
-.side-menu::-webkit-scrollbar-thumb:hover {
-  background: #3a4c99;
-}
 
 @media only screen and (max-width: 500px) {
 

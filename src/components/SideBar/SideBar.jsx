@@ -3,6 +3,9 @@ import { NavItem, NavLink, Nav } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import Logo from "../../logo.jpg";
+import {CiViewList} from "react-icons/ci"
+import {RiContactsLine} from "react-icons/ri"
+import {BiTask,BiTaskX} from "react-icons/bi"
 
 const SideBar = ({ isOpen, toggle }) => (
 
@@ -17,12 +20,22 @@ const SideBar = ({ isOpen, toggle }) => (
       <h1>My Todo</h1>
     </div>
     <div className="side-menu">
-      <Nav vertical className="list-unstyled pb-3">
+      <Nav vertical className="list-unstyled pb-3 nav-menu">
         <NavItem>
-            My Tasks
+            <CiViewList></CiViewList>
+            All Tasks
         </NavItem>
         <NavItem>
+            <BiTask></BiTask>
             Tasks Done
+        </NavItem>
+        <NavItem>
+            <BiTaskX></BiTaskX>
+            Not Done
+        </NavItem>
+        <NavItem>
+            <RiContactsLine></RiContactsLine>
+            Contact
         </NavItem>
         
       </Nav>
