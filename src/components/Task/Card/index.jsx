@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EditTask from "../Modal/EditTask";
+import EditTask from "../../Modal/EditTask";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { FiCalendar } from "react-icons/fi";
 import "bootstrap/dist/css/bootstrap.min.css";

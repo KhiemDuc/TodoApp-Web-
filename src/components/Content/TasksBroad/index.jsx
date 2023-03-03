@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import CreateTask from "../Modal/CreateTask";
-import Card from "../Card";
-import SideBar from "../SideBar/SideBar";
+import CreateTask from "../../Modal/CreateTask"
 import { IoIosAdd } from "react-icons/io";
-import TypeTask from "../TypeTask";
-import Header from "../Header";
+import TypeTask from "../../Task/TypeTask";
+import Header from "../../Header";
 
 
-const TodoList = () => {
+const TasksBroad = () => {
   const [modal, setModal] = useState(false);
   const [taskList, setTaskList] = useState([]);
   const [toggleFilter, setToggleFilter] = useState(false);
@@ -76,14 +74,11 @@ const TodoList = () => {
     setToggleFilter(true);
   };
 
-  const [sidebarIsOpen, setSidebarOpen] = useState(true);
-  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
+  
   return (
-    <div className="Wrapper">
-      <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+    <>
       <div className="task_container">
         <Header inputText={inputText} inputHandler={inputHandler}>Tasks Broad</Header>
-
         <div className="task-action">
           <button
             className="btn btn-outline-secondary m-5 "
@@ -92,7 +87,6 @@ const TodoList = () => {
             <IoIosAdd size={32} />
             Create Task
           </button>
-          
           <select name="filter" id="filter" onChange={handleFilter}>
             <option value="All">
                 All
@@ -117,8 +111,8 @@ const TodoList = () => {
 
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
-    </div>
+    </>
   );
 };
 
-export default TodoList;
+export default TasksBroad;

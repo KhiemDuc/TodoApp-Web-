@@ -1,11 +1,11 @@
 import React from "react";
-import { NavItem, NavLink, Nav } from "reactstrap";
+import { NavItem, Nav} from "reactstrap";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import Logo from "../../logo.jpg";
 import { CiViewList } from "react-icons/ci";
 import { RiContactsLine } from "react-icons/ri";
 import { BiTask, BiTaskX } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -21,20 +21,20 @@ const SideBar = ({ isOpen, toggle }) => (
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3 nav-menu">
         <NavItem>
-          <CiViewList className="item-icon"></CiViewList>
-          <p className="item-name">Tasks Broad</p>
+            <CiViewList className="item-icon"></CiViewList>
+            <Link to="/" className="item-name">Tasks Broad</Link>
         </NavItem>
         <NavItem>
           <BiTaskX className="item-icon"></BiTaskX>
-          <p className="item-name">Time Sheet</p>
+          <Link to="/timesheet" className="item-name">Time Sheet</Link>
         </NavItem>
         <NavItem>
-          <RiContactsLine className="item-icon"></RiContactsLine>
-          <p className="item-name">Calendar</p>
+          <BiTask className="item-icon"></BiTask>
+          <Link to="/calendar" className="item-name">Calendar</Link>
         </NavItem>
         <NavItem>
-          <RiContactsLine className="item-icon"></RiContactsLine>
-          <p className="item-name">Contact</p>
+            <RiContactsLine className="item-icon"></RiContactsLine>
+            <Link to="/contact" className="item-name">Contact</Link>
         </NavItem>
       </Nav>
     </div>
