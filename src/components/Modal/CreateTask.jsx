@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const CreateTaskPopup = ({ modal, toggle, save }) => {
-
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [time, setTime] = useState("");
-
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -20,47 +18,35 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
     }
     if (name === "Time") {
       setTime(value);
-    } 
-    if(name === "status") {
+    }
+    if (name === "status") {
       setStatus(value);
     }
   };
 
-
   const handleSave = (e) => {
     e.preventDefault();
-
-    setTaskName('');
-    setDescription('');
-    setTime('');
-    setStatus('');
-    
     let taskObj = {};
 
-    if(taskName === ""){
-        taskObj["Name"] = 'No title';
+    if (taskName === "") {
+      taskObj["Name"] = "No title";
+    } else {
+      taskObj["Name"] = taskName;
     }
-    else{
-        taskObj["Name"] = taskName;
+    if (status === "") {
+      taskObj["status"] = "Not Doing";
+    } else {
+      taskObj["status"] = status;
     }
-    if(status === "")
-    {
-        taskObj["status"] = 'Not Doing'
+    if (time === "") {
+      taskObj["time"] = "Today";
+    } else {
+      taskObj["time"] = time;
     }
-    else{
-        taskObj["status"] = status;
-    }
-    if(time === ""){
-        taskObj["time"] = "Today";
-    }
-    else{
-        taskObj["time"] = time;
-    }
-    if(description === ""){
-        taskObj["Description"] = "No description"
-    }
-    else{
-        taskObj["Description"] = description;
+    if (description === "") {
+      taskObj["Description"] = "No description";
+    } else {
+      taskObj["Description"] = description;
     }
     save(taskObj);
   };
@@ -74,38 +60,40 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
           <input
             type="text"
             className="form-control"
-            value={taskName}
+            // value={taskName}
             onChange={handleChange}
             name="taskName"
           />
         </div>
-        
+
         <div className="form-group">
           <label>Time</label>
           <input
-            type="text"
+            type="date"
             className="form-control"
-            value={time}
             onChange={handleChange}
             name="Time"
           />
         </div>
         <div className="form-group">
           <label>Status</label>
-          <input
-            type="text"
+          <select
             className="form-control"
-            value={status}
+            // value={status}
             onChange={handleChange}
             name="status"
-          />
+          >
+            <option>Not Working</option>
+            <option>Doing</option>
+            <option>Done</option>
+          </select>
         </div>
         <div className="form-group">
           <label>Description</label>
           <textarea
             rows="5"
             className="form-control"
-            value={description}
+            // value={description}
             onChange={handleChange}
             name="description"
           ></textarea>

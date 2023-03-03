@@ -77,13 +77,16 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
         </div>
         <div className="form-group">
           <label>Status</label>
-          <input
-            type="text"
+          <select
             className="form-control"
             value={status}
             onChange={handleChange}
             name="status"
-          />
+          >
+            <option>Not Working</option>
+            <option>Doing</option>
+            <option>Done</option>
+          </select>
         </div>
         <div className="form-group">
           <label>Time</label>

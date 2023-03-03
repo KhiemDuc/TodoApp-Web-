@@ -3,12 +3,16 @@ import CreateTask from "../Modal/CreateTask";
 import Card from "../Card";
 import SideBar from "../SideBar/SideBar";
 import { IoIosAdd } from "react-icons/io";
-import { BiFilter } from "react-icons/bi";
-import {AiOutlineSearch} from "react-icons/ai"
+import TypeTask from "../TypeTask";
+import Header from "../Header";
+
 
 const TodoList = () => {
   const [modal, setModal] = useState(false);
   const [taskList, setTaskList] = useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [typeFilter, setTypeFilter] = useState("");
 
   useEffect(() => {
     let arr = localStorage.getItem("taskList");
@@ -47,22 +51,30 @@ const TodoList = () => {
     setModal(false);
   };
 
-  const [inputText, setInputText] = useState("");
+  
   let inputHandler = (e) => {
-    //convert input text to lower case
+    setToggleFilter(false);
     const valueSearch = e.target.value.toLowerCase();
     setInputText(valueSearch);
   };
+
   const filteredData = taskList.filter((el) => {
-    //if no input the return the original
     if (inputText === "") {
       return el;
-    }
-    //return the item which contains the user input
-    else {
-      return el.Name.toLowerCase().includes(inputText);
+    } else {
+      const data = el.Name.toLowerCase().includes(inputText);
+      if (data === false) {
+        return el.Description.toLowerCase().includes(inputText);
+      } else {
+        return data;
+      }
     }
   });
+
+  const handleFilter = (e) => {
+    setTypeFilter(e.target.value);
+    setToggleFilter(true);
+  };
 
   const [sidebarIsOpen, setSidebarOpen] = useState(true);
   const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
@@ -70,19 +82,7 @@ const TodoList = () => {
     <div className="Wrapper">
       <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
       <div className="task_container">
-        <div className="wrapper-header">
-          <h2 className="task-header">All Tasks</h2>
-          <span className="form-group task-search">
-            <input
-              type="text"
-              className="form-control"
-              value={inputText}
-              onChange={inputHandler}
-              name="search"
-              placeholder={`Search Here...`}
-            />
-          </span>
-        </div>
+        <Header inputText={inputText} inputHandler={inputHandler}>Tasks Broad</Header>
 
         <div className="task-action">
           <button
@@ -92,23 +92,29 @@ const TodoList = () => {
             <IoIosAdd size={32} />
             Create Task
           </button>
-          <button className="btn btn-outline-secondary filter m-5">
-            {" "}
-            Filter <BiFilter size={32} />
-          </button>
+          
+          <select name="filter" id="filter" onChange={handleFilter}>
+            <option value="All">
+                All
+            </option>
+            <option value="Not Working">
+                Not Working
+            </option>
+            <option value="Doing">
+                Doing
+            </option>
+            <option value="Done">
+                Done
+            </option>
+          </select>
         </div>
+
         <div className="task-list">
-          {taskList &&
-            filteredData.map((obj, index) => (
-              <Card
-                key={index}
-                taskObj={obj}
-                index={index}
-                deleteTask={deleteTask}
-                updateListArray={updateListArray}
-              />
-            ))}
+          {taskList && !toggleFilter &&<TypeTask updateListArray={updateListArray} deleteTask={deleteTask} data={filteredData} type={"All"}/>
+          }
+          {typeFilter && toggleFilter && <TypeTask updateListArray={updateListArray} deleteTask={deleteTask} data={taskList} type={typeFilter}/>}           
         </div>
+
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
     </div>
