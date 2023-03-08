@@ -34,7 +34,7 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
       taskObj["Name"] = taskName;
     }
     if (status === "") {
-      taskObj["status"] = "Not Doing";
+      taskObj["status"] = "Not working";
     } else {
       taskObj["status"] = status;
     }

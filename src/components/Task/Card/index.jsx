@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
   const [modal, setModal] = useState(false);
-
+  
   const colors = [
     {
       primaryColor: "#5D93E1",

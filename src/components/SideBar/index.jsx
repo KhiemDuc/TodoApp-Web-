@@ -34,7 +34,7 @@ const SideBar = ({ isOpen, toggle }) => (
         </NavItem>
         <NavItem>
             <RiContactsLine className="item-icon"></RiContactsLine>
-            <Link to="/contact" className="item-name">Contact</Link>
+            <Link to="/about" className="item-name">About</Link>
         </NavItem>
       </Nav>
     </div>

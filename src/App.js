@@ -13,11 +13,11 @@ function App() {
   const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
   return (
   <Router>
-    <div className="Wrapper">s
+    <div className="Wrapper">
       <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen}  />
       <Routes>
             <Route path="/" element={<TasksBroad />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<Contact />} />
       </Routes>
     </div>
   </Router>

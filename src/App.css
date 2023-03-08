@@ -2,8 +2,8 @@
 .Wrapper {
   display: flex;
   flex-direction: row;
-
   font-family: 'Pacifico', cursive;
+  height: 100%;
 }
 
 .header {
@@ -20,17 +20,18 @@
   height: 150px;
   border-radius: 50%;
 }
-#filter{
-  width: 150px;
-  height: 48px;
-  color: #6C757D;
-  border-radius: 8px;
-  border: 1.5px solid #6c757d;
-  text-align: center;
-  background-color:#f4f8fb;
+
+
+
+/*About me  */
+.About_me{
+  margin-top: 200px;
+  display: flex;
+  align-items: center; 
+  margin-left: 100px;
+  font-family:'Courier New', Courier, monospace
+ 
 }
-
-
 
 /* Card */
 .card-container {
@@ -115,6 +116,15 @@
   padding: 50px 8% 0 6%;
   width: 100%;
 }
+#filter{
+  width: 150px;
+  height: 48px;
+  color: #6C757D;
+  border-radius: 8px;
+  border: 1.5px solid #6c757d;
+  text-align: center;
+  background-color:#f4f8fb;
+}
 
 /* End Header */
 
@@ -164,7 +174,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 8%;
+  padding: 0 7%;
 }
 
 .task-list {

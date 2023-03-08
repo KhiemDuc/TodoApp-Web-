@@ -2,16 +2,13 @@ import Card from "../Card";
 
 function TypeTask({ data, deleteTask, updateListArray, type }) {
   const filteredStatus = data.filter((el) => {
+    console.log(type.toLowerCase());
     if (type === "All") {
       return el;
     }
-    if (type === "Done") {
-      return el.status.toLowerCase().includes("done");
+    else{
+      return el.status.toLowerCase().includes(type.toLowerCase());
     }
-    if (type === "Doing") {
-      return el.status.toLowerCase().includes("doing");
-    }
-    return el.status.toLowerCase().includes("not");
   });
   return (
     <>
