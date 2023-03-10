@@ -1,0 +1,16 @@
+/*About me  */
+.about {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  font-family: 'Courier New', Courier, monospace
+}
+
+.container {
+  margin-top: 25px;
+  flex: 1;
+  background-color: #f4f8fb;
+  margin-left: 250px;
+  min-height: 93vh;
+}

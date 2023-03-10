@@ -1,8 +1,10 @@
+import style from './Header.module.css'
+
 function Header({inputText,inputHandler,children}) {
   return (
-    <div className="wrapper-header">
-      <h2 className="task-header">{children}</h2>
-      <span className="form-group task-search">
+    <div className={style.wrapHeader}>
+      <h2 className={style.Heading}>{children}</h2>
+      <span className={style.taskSearch}>
         <input
           type="text"
           className="form-control"

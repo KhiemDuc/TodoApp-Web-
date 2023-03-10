@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const CreateTaskPopup = ({ modal, toggle, save }) => {
@@ -6,6 +7,7 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [time, setTime] = useState("");
+  const [timeStart,setTimeStart] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -18,6 +20,9 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
     }
     if (name === "Time") {
       setTime(value);
+    }
+    if(name === "TimeStart"){
+      setTimeStart(value);
     }
     if (name === "status") {
       setStatus(value);
@@ -43,6 +48,11 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
     } else {
       taskObj["time"] = time;
     }
+    if (timeStart === "") {
+      taskObj["TimeStart"] = "Today";
+    } else {
+      taskObj["TimeStart"] = timeStart;
+    }
     if (description === "") {
       taskObj["Description"] = "No description";
     } else {
@@ -65,7 +75,15 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
             name="taskName"
           />
         </div>
-
+        <div className="form-group">
+          <label>Time Start</label>
+          <input
+            type="date"
+            className="form-control"
+            onChange={handleChange}
+            name="TimeStart"
+          />
+        </div>
         <div className="form-group">
           <label>Time</label>
           <input

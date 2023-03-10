@@ -3,7 +3,7 @@ import CreateTask from "../../Modal/CreateTask"
 import { IoIosAdd } from "react-icons/io";
 import TypeTask from "../../Task/TypeTask";
 import Header from "../../Header";
-
+import style from "./tasksBroad.module.css"
 
 const TasksBroad = () => {
   const [modal, setModal] = useState(false);
@@ -77,18 +77,18 @@ const TasksBroad = () => {
   
   return (
     <>
-      <div className="task_container">
+      <div className={style.container}>
         <Header inputText={inputText} inputHandler={inputHandler}>Tasks Broad</Header>
-        <div className="task-action">
+        <div className={style.action}>
           <button
-            className="btn btn-outline-secondary m-5 "
+            className="btn btn-outline-secondary"
             onClick={() => setModal(true)}
           >
             <IoIosAdd size={32} />
             Create Task
           </button>
-          <select name="filter" id="filter" onChange={handleFilter}>
-            <option value="All">
+          <select name="filter" id={style.filter} className={"form-select"} onChange={handleFilter}>
+            <option value="All" selected>
                 All
             </option>
             <option value="Not Working">
@@ -103,7 +103,7 @@ const TasksBroad = () => {
           </select>
         </div>
 
-        <div className="task-list">
+        <div className={style.list}>
           {taskList && !toggleFilter &&<TypeTask updateListArray={updateListArray} deleteTask={deleteTask} data={filteredData} type={"All"}/>
           }
           {typeFilter && toggleFilter && <TypeTask updateListArray={updateListArray} deleteTask={deleteTask} data={taskList} type={typeFilter}/>}           

@@ -6,6 +6,7 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [time, setTime] = useState("");
+  const [timeStart, setTimeStart] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +19,11 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
     }
     if (name === "Time") {
       setTime(value);
-    } else {
+    }
+    if (name === "TimeStart") {
+      setTimeStart(value);
+    } 
+    if(name === "status" ){
       setStatus(value);
     }
   };
@@ -28,35 +33,36 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
     setDescription(taskObj.Description);
     setStatus(taskObj.status);
     setTime(taskObj.time);
+    setTimeStart(taskObj.TimeStart);
   }, []);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     let tempObj = {};
-    if(taskName === ""){
-        tempObj["Name"] = 'No title';
+    if (taskName === "") {
+      tempObj["Name"] = "No title";
+    } else {
+      tempObj["Name"] = taskName;
     }
-    else{
-        tempObj["Name"] = taskName;
+    if (status === "") {
+      tempObj["status"] = "Not Doing";
+    } else {
+      tempObj["status"] = status;
     }
-    if(status === "")
-    {
-        tempObj["status"] = 'Not Doing'
+    if (time === "") {
+      tempObj["time"] = "Today";
+    } else {
+      tempObj["time"] = time;
     }
-    else{
-        tempObj["status"] = status;
+    if (timeStart === "") {
+      tempObj["TimeStart"] = "Today";
+    } else {
+      tempObj["TimeStart"] = timeStart;
     }
-    if(time === ""){
-        tempObj["time"] = "Today";
-    }
-    else{
-        tempObj["time"] = time;
-    }
-    if(description === ""){
-        tempObj["Description"] = "No description"
-    }
-    else{
-        tempObj["Description"] = description;
+    if (description === "") {
+      tempObj["Description"] = "No description";
+    } else {
+      tempObj["Description"] = description;
     }
     updateTask(tempObj);
   };
@@ -78,24 +84,35 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
         <div className="form-group">
           <label>Status</label>
           <select
-            className="form-control"
+            className={"form-select"}
             value={status}
             onChange={handleChange}
             name="status"
           >
-            <option>Not Working</option>
+            <option selected>Not Working</option>
             <option>Doing</option>
             <option>Done</option>
           </select>
         </div>
         <div className="form-group">
+          <label>Time Start</label>
+          <input
+            type="date"
+            className="form-control"
+            onChange={handleChange}
+            name="TimeStart"
+            value={timeStart}
+          />
+        </div>
+        <div className="form-group">
           <label>Time</label>
           <input
-            type="text"
+            type="date"
             className="form-control"
-            value={time}
             onChange={handleChange}
             name="Time"
+            value={time}
+            format={"dd MM yyyy"}
           />
         </div>
         <div className="form-group">

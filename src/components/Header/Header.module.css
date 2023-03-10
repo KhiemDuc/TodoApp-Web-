@@ -1,0 +1,33 @@
+.wrapHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 8% 0 6%;
+    width: 100%;
+}
+
+.Heading {
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
+.taskSearch {
+    display: flex;
+    min-width: 300px;
+    height: 40px;
+}
+
+.taskSearch>input:focus {
+    width: 500px !important;
+}
+
+@media only screen and (max-width: 500px) {
+    .wrapHeader {
+        display: block;
+    }
+    .taskSearch {
+        margin-top: 50px;
+        max-width: 100px;
+        margin-left: 50px;
+    }
+}
